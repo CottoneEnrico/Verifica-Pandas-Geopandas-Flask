@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Prezzo medio quartiere</title>
+</head>
+<body>
+    <h1>Prezzo medio nel quartiere {{ quartiere }}</h1>
+    {% if prezzo_medio %}
+    <p>Il prezzo medio nel quartiere {{ quartiere }} è di {{ prezzo_medio }} euro</p>
+    {% else %}
+    <form>
+        <label for="quartiere">Seleziona il quartiere:</label>
+        <select id="quartiere" name="quartiere">
+            {% for quartiere in quartieri %}
+            <option value="{{ quartiere }}">{{ quartiere }}</option>
+            {% endfor %}
+        </select>
+        <button type="submit">Visualizza prezzo medio</button>
+    </form>
+    {% endif %}
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Prezzo medio quartieri</title>
+</head>
+<body>
+    <h1>Prezzo medio per ogni quartiere</h1>
+    {% if prezzi_medi %}
+    <table>
+        <thead>
+            <tr>
+                <th>Quartiere</th>
+                <th>Prezzo medio</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for quartiere, prezzo_medio in prezzi_medi.iteritems() %}
+            <tr>
+                <td>{{ quartiere }}</td>
+                <td>{{ prezzo_medio }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% if tasso_conversione %}
+    <p>Prezzi medi convertiti con tasso di conversione {{ tasso_conversione }}:</p>
+    <table>
+        <thead>
+            <tr>
+                <th>Quartiere</th>
+                <th>Prezzo medio</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for quartiere, prezzo_medio in prezzi_medi_altra_valuta.iteritems() %}
+            <tr>
+                <td>{{ quartiere }}</td>
+                <td>{{ prezzo_medio }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <form>
+        <label for="tasso_conversione">Inserisci il tasso di conversione euro-altra valuta:</label>
+        <input type="number" id="tasso_conversione" name="tasso_conversione">
+        <button type="submit">Converti prezzi medi</button>
+    </form>
+    {% endif %}
+    {% else %}
+    <p>Non ci sono dati disponibili.</p>
+    {% endif %}
+</body>
+</html>

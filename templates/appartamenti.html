@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Appartamenti in vendita a {{ quartiere }}</title>
+</head>
+<body>
+    <form method="POST">
+        <label for="quartiere">Quartiere:</label>
+        <input type="text" id="quartiere" name="quartiere">
+        <button type="submit">Cerca</button>
+    </form>
+
+    <h1>Appartamenti in vendita a {{ quartiere }}</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Data</th>
+                <th>Indirizzo</th>
+                <th>Prezzo</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for index, row in appartamenti.iterrows() %}
+            <tr>
+                <td>{{ row['date'] }}</td>
+                <td>{{ row['price'] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
+
